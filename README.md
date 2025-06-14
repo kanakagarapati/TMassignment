@@ -154,6 +154,6 @@ The application is deployed using:
 
 ---
 
-## 📎 Repository
+## 📎 Code taken from below Repository
 
 [GitHub - TravelMemory](https://github.com/UnpredictablePrashant/TravelMemory)
