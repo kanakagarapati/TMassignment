@@ -125,7 +125,15 @@ The application is deployed using:
 
 2. **Configure DNS on Cloudflare**
    - Point frontend and backend subdomains (`api.kmgtm.info`) to respective Load Balancer DNS
-   - Enable SSL in Cloudflare
+   - Enable SSL in Cloudflare </br>
+   **Before configuring Load balancer**</br>
+   <p>
+   <img width="452" alt="image" src="https://github.com/user-attachments/assets/92a99805-637c-43d7-a781-8eebee05f0db" /></p></br>
+
+   **After configuring Load balancer**</br>
+   <p>
+   <img width="452" alt="image" src="https://github.com/user-attachments/assets/1beec478-364f-4fdc-bb7e-1e282f96f3a0" /></p></br>
+
 
 ---
 
@@ -133,7 +141,24 @@ The application is deployed using:
 
 - Ensureing my EC2 instances pass health checks in their target groups
 - Backend running: `https://api.kmgtm.info`
-- Frontend running: `https://kmgtm.info`
+- Frontend running: `https://kmgtm.info` </br>
+  **Below are the screens for app health and application testing with custom domain and LB.**
+  - App Load</br>
+  <p>
+  <img width="452" alt="image" src="https://github.com/user-attachments/assets/d212509f-bd44-4cf1-b9f3-cc37ff4457fe" /></br>
+  <img width="452" alt="image" src="https://github.com/user-attachments/assets/5c311c02-4268-4327-a22b-cfa5525a1199" /></p>
+  - DB screens
+  <p><img width="452" alt="image" src="https://github.com/user-attachments/assets/b653f6ff-f348-4aa1-b6a0-683df423cb37" /></p>
+
+  - App health screens</br>
+  
+   <p><img width="452" alt="image" src="https://github.com/user-attachments/assets/64a91a7b-3055-45ed-b3ea-93a1e6c361ed" /></p></br>
+    <p><img width="432" alt="image" src="https://github.com/user-attachments/assets/d9ac5bc6-67fa-495c-a539-bf6d06b0cbea" /></p></br>
+
+
+
+
+
 
 ---
 
@@ -145,7 +170,8 @@ The application is deployed using:
   ```
   /etc/letsencrypt/live/<domain>/fullchain.pem
   ```
-
+## Complete assignment documentation link
+**Click on <a href="https://docs.google.com/document/d/1GurgdBSHPK7NMF84HVahdybzLc8uT_FX/edit?usp=sharing&ouid=109749314648122414873&rtpof=true&sd=true">Complete Assignment Documentation</a> like to see all the detailed steps and test results and app health**
 ---
 
 ## 🧑‍💻 Author
