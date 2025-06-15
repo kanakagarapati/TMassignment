@@ -95,7 +95,7 @@ The application is deployed using:
    sudo systemctl restart nginx
    ```
 
-4. **Enable HTTPS with Certbot**
+4. **Enabled HTTPS with Certbot**
    ```bash
    sudo apt install certbot python3-certbot-nginx -y
    sudo certbot --nginx -d <frontend-domain>
@@ -105,13 +105,13 @@ The application is deployed using:
 
 ## ☁️ Load Balancers & Target Groups
 
-1. **Create Target Groups**
-   - `TG-FE` for Frontend EC2s
-   - `TG-BE` for Backend EC2s
+1. **Created Target Groups**
+   - `kanakaManoj-FE-target-group` for Frontend EC2s
+   - `kanakaManoj-BE-target-group` for Backend EC2s
 
-2. **Create Load Balancers**
-   - `ALB-FE` pointing to `TG-FE`
-   - `ALB-BE` pointing to `TG-BE`
+2. **Created Load Balancers**
+   - `KanakaManoj-FE-LB` pointing to `kanakaManoj-FE-target-group`
+   - `KanakaManoj-BE-LB` pointing to `kanakaManoj-BE-target-group`
 
 3. **Configure Security Groups**
    - Allow HTTP (80), HTTPS (443), and custom ports if needed
@@ -124,14 +124,14 @@ The application is deployed using:
    - From GoDaddy
 
 2. **Configure DNS on Cloudflare**
-   - Point frontend and backend subdomains (e.g., `api.kmgtm.info`) to respective Load Balancer DNS
+   - Point frontend and backend subdomains (`api.kmgtm.info`) to respective Load Balancer DNS
    - Enable SSL in Cloudflare
 
 ---
 
 ## ✅ Health Check & Testing
 
-- Ensure EC2 instances pass health checks in their target groups
+- Ensureing my EC2 instances pass health checks in their target groups
 - Backend running: `https://api.kmgtm.info`
 - Frontend running: `https://kmgtm.info`
 
