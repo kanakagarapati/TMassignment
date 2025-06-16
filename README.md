@@ -50,23 +50,41 @@ The application is deployed using:
    ```
 
 6. **Configure Nginx Reverse Proxy**
+   - Back End
    ```nginx
    server {
-       listen 80;
-       server_name api.kmgtm.info;
+    listen 80;
+    server_name api.kmgtm.info;
 
-       location / {
-           proxy_pass http://localhost:3000;
-           proxy_http_version 1.1;
-           proxy_set_header Host $host;
-           proxy_set_header X-Real-IP $remote_addr;
-           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-           proxy_set_header Upgrade $http_upgrade;
-           proxy_set_header Connection 'upgrade';
-       }
-   }
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name api.kmgtm.info;
+
+    ssl_certificate /etc/letsencrypt/live/api.kmgtm.info/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/api.kmgtm.info/privkey.pem;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
    ```
+![image](https://github.com/user-attachments/assets/051b286e-33bb-4964-bfca-a445d088b307)
 
+</br>
+   - Front end 
 7. **Enable HTTPS with Certbot**
    ```bash
    sudo apt install certbot python3-certbot-nginx -y
