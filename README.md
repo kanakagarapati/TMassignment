@@ -63,9 +63,8 @@ The application is deployed using:
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
-}
-
-server {
+   }
+   server {
     listen 443 ssl;
     server_name api.kmgtm.info;
 
@@ -79,12 +78,47 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
-}
+   }
    ```
 ![image](https://github.com/user-attachments/assets/051b286e-33bb-4964-bfca-a445d088b307)
 
 </br>
-   - Front end 
+   - Front end </br>
+   
+   ```nginx
+   server {
+    listen 80;
+    server_name kmgtm.info www.kmgtm.info;
+
+    root /home/ubuntu/TravelMemory/frontend/build;
+    index index.html;
+
+    location / {
+        try_files $uri /index.html;
+    }
+
+    error_log /var/log/nginx/frontend_error.log;
+    access_log /var/log/nginx/frontend_access.log;
+   }
+   server {
+    listen 443 ssl;
+    server_name kmgtm.info www.kmgtm.info;
+
+    ssl_certificate /etc/letsencrypt/live/api.kmgtm.info/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/api.kmgtm.info/privkey.pem;
+    root /home/ubuntu/TravelMemory/frontend/build;
+    index index.html;
+
+    location / {
+        try_files $uri /index.html;
+    }
+
+    error_log /var/log/nginx/frontend_error.log;
+    access_log /var/log/nginx/frontend_access.log;
+   }
+   ```
+![image](https://github.com/user-attachments/assets/caa96261-6b6a-44f5-93c2-56d7134ff10d)
+
 7. **Enable HTTPS with Certbot**
    ```bash
    sudo apt install certbot python3-certbot-nginx -y
